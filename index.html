@@ -118,7 +118,8 @@
     /* ── SECTIONS — panoramic strips ── */
     section {
       width: 100%;
-      margin: 0;
+      max-width: 1280px;
+      margin: 0 auto;
       padding: 0;
       border-top: 2px solid rgba(255,255,255,0.07);
       opacity: 1;
@@ -144,10 +145,10 @@
       overflow: hidden;
     }
 
-    .block               { grid-template-columns: 28% 72%; }
-    .block.img-med        { grid-template-columns: 36% 64%; }
-    .block.reverse        { grid-template-columns: 72% 28%; }
-    .block.reverse.img-med{ grid-template-columns: 64% 36%; }
+    .block               { grid-template-columns: 22% 78%; }
+    .block.img-med        { grid-template-columns: 30% 70%; }
+    .block.reverse        { grid-template-columns: 78% 22%; }
+    .block.reverse.img-med{ grid-template-columns: 70% 30%; }
 
     .block.reverse .block-text { order: -1; }
 
@@ -165,7 +166,7 @@
     .section-label {
       font-family: 'Bangers', cursive;
       font-weight: 400;
-      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      font-size: clamp(1.1rem, 1.6vw, 1.5rem);
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: #e8e4dc;
@@ -188,10 +189,9 @@
 
     .block-text p {
       color: #a0998f;
-      font-size: 0.84rem;
-      line-height: 1.55;
+      font-size: 0.93rem;
+      line-height: 1.6;
       margin-bottom: 0.5rem;
-      max-width: 72ch;
       text-align: justify;
     }
 
@@ -393,10 +393,13 @@
   <!-- RESEARCH -->
   <section id="research">
     <div class="block img-med" style="height:280px">
-      <div class="poster-card">
-        <div class="poster-sub">Prime Video</div>
-        <div class="poster-title">Pact met<br>de Duivel</div>
-        <div class="poster-sub">research</div>
+      <div style="position:relative; width:100%; height:100%; overflow:hidden;">
+        <iframe
+          src="https://www.youtube.com/embed/lT0Zb3Tpwm8?rel=0"
+          style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
       </div>
       <div class="block-text">
         <div class="section-label">Research</div>
