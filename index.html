@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ewout Lowie — Journalist & Schrijver</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,600;1,400;1,700&family=Roboto:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #000;
+      --bg-alt: #000;
+      --yellow: #f5c800;
+      --white: #e8e4dc;
+      --muted: #888;
+      --grid: rgba(255,255,255,0.03);
+      --max: 1400px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #000;
+      color: var(--white);
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent);
+      backdrop-filter: blur(4px);
+    }
+
+    nav .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    header {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 9rem 2rem 5rem;
+      text-align: center;
+    }
+
+    header .eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      color: #111;
+      margin-bottom: 2rem;
+    }
+
+    header h1 span { color: #111; }
+
+    header p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: #555;
+      font-size: 1rem;
+      font-style: italic;
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: #222;
+      margin: 2.5rem auto;
+    }
+
+    /* ── SECTIONS — panoramic strips ── */
+    section {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border-top: 2px solid rgba(255,255,255,0.07);
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    section.animate {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    section.animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .block {
+      display: grid;
+      gap: 0;
+      align-items: stretch;
+      height: 260px;
+      overflow: hidden;
+    }
+
+    .block               { grid-template-columns: 28% 72%; }
+    .block.img-med        { grid-template-columns: 36% 64%; }
+    .block.reverse        { grid-template-columns: 72% 28%; }
+    .block.reverse.img-med{ grid-template-columns: 64% 36%; }
+
+    .block.reverse .block-text { order: -1; }
+
+    .block img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(15%) contrast(1.05);
+      transition: filter 0.5s;
+    }
+    .block img:hover { filter: grayscale(0%) contrast(1.1); }
+
+    /* section label */
+    .section-label {
+      font-family: 'Bangers', cursive;
+      font-weight: 400;
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #e8e4dc;
+      margin-bottom: 0.4rem;
+      line-height: 1;
+    }
+
+    .block-text {
+      padding: 1.6rem 2.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-left: 2px solid rgba(255,255,255,0.08);
+    }
+
+    .block.reverse .block-text {
+      border-left: none;
+      border-right: 2px solid rgba(255,255,255,0.08);
+    }
+
+    .block-text p {
+      color: #a0998f;
+      font-size: 0.84rem;
+      line-height: 1.55;
+      margin-bottom: 0.5rem;
+      max-width: 72ch;
+      text-align: justify;
+    }
+
+    .block-text ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.15rem 1rem;
+    }
+
+    .block-text ul li {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      color: #777;
+    }
+
+    .block-text ul li::before {
+      content: '↳ ';
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ── IMAGE PLACEHOLDERS ── */
+    .img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .img-placeholder.research { background: #0e1a2e; }
+    .img-placeholder.podcast { background: #0d1f1a; }
+    .img-placeholder.schrijven { background: #1a1208; }
+    .img-placeholder.copywrite { background: #1a0f08; }
+    .img-placeholder.eindredactie { background: #0f1520; }
+    .img-placeholder.komisch { background: #1a1020; }
+    .img-placeholder.over { background: #121a10; }
+
+    /* research specific: show poster-style card */
+    .poster-card {
+      background: #0e1a2e;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      padding: 1rem;
+    }
+
+    .poster-card .poster-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--white);
+      text-align: center;
+      line-height: 1;
+    }
+
+    .poster-card .poster-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* podcast card */
+    .podcast-card {
+      background: linear-gradient(135deg, #0d2a1f 0%, #0a1a10 100%);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 1.2rem;
+      gap: 0.3rem;
+    }
+
+    .podcast-card .podcast-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--white);
+      text-align: right;
+      line-height: 1;
+    }
+
+    .podcast-card .podcast-badge {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      border: 1px solid var(--yellow);
+      padding: 0.15rem 0.4rem;
+    }
+
+    /* salami magazine card */
+    .magazine-card {
+      background: #f5ede0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      gap: 0.1rem;
+    }
+
+    .magazine-card .mag-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: #c0392b;
+      line-height: 0.85;
+      text-align: center;
+    }
+
+    .magazine-card .mag-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+      margin-top: 0.3rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .block,
+      .block.reverse,
+      .block.img-med,
+      .block.reverse.img-med {
+        grid-template-columns: 1fr;
+        height: auto !important;
+      }
+      .block .img-placeholder,
+      .block .poster-card,
+      .block .podcast-card,
+      .block .magazine-card { height: 180px; }
+      .block.reverse .block-text { order: -1; }
+      .block-text { padding: 1.5rem; border: none !important; }
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">Ewout Lowie</a>
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#podcast">Podcast</a></li>
+      <li><a href="#schrijven">Schrijven</a></li>
+      <li><a href="#copywriting">Copywriting</a></li>
+      <li><a href="#eindredactie">Eindredactie</a></li>
+      <li><a href="#over">Over mij</a></li>
+    </ul>
+  </nav>
+
+  <div style="height: 56px;"></div>
+
+  <!-- INTRO -->
+  <div style="max-width: 640px; margin: 3rem auto 2.5rem; padding: 0 2rem; text-align: center;">
+    <p style="font-family: 'Roboto', sans-serif; font-size: 0.95rem; line-height: 1.75; color: #a0998f;">Hier een stukje tekst over dat ik dit kan en gedaan heb. Over wat er leuk aan is en waar ik goed in ben. Geweldig allemaal. Dit is een proeftekstje om bij wijze van placeholder. Want er moet wel een beetje vlees aan het bot zitten, wil je het een beetje fatsoenlijk vorm kunnen geven.</p>
+  </div>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="block img-med" style="height:280px">
+      <div class="poster-card">
+        <div class="poster-sub">Prime Video</div>
+        <div class="poster-title">Pact met<br>de Duivel</div>
+        <div class="poster-sub">research</div>
+      </div>
+      <div class="block-text">
+        <div class="section-label">Research</div>
+        <p>Hier een stukje tekst over dat ik dit kan en gedaan heb. Over wat er leuk aan is en waar ik goed in ben. Geweldig allemaal. Dit is een proeftekstje om bij wijze van placeholder.</p>
+        <ul>
+          <li>Ik Weet je wachtwoord (Videoland)</li>
+          <li>BobCoin (Martijn Goris)</li>
+          <li>Pact met de Duivel (Prime Video)</li>
+          <li>Snoepjes (Canal+)</li>
+          <li>Explosief Nederland (Videoland)</li>
+          <li>Stormchasers (Powned)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PODCAST -->
+  <section id="podcast">
+    <div class="block reverse" style="height:240px">
+      <div class="block-text">
+        <div class="section-label">Podcast</div>
+        <p>Vanwege een fascinatie voor aliens en het heelal bedacht ik een wetenschappelijke podcastserie, die ik mocht maken voor Origins Center.</p>
+        <p>Hier een stukje tekst om bij wijze van placeholder. Want er moet wel een beetje vlees aan het bot zitten.</p>
+      </div>
+      <div class="podcast-card">
+        <div class="podcast-title">Over Leven<br>in het<br>Heelal</div>
+        <div class="podcast-badge">Origins Center</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHRIJVEN -->
+  <section id="schrijven">
+    <div class="block" style="height:260px">
+      <div class="img-placeholder schrijven">
+        <div style="text-align:center; line-height:1.6;">
+          <div style="font-family:'Bebas Neue',sans-serif; font-size:1rem; color:#c8a84b; letter-spacing:0.08em;">1. Het gehoemp van de roerdomp</div>
+          <div style="font-size:0.65rem; color:var(--muted); letter-spacing:0.12em; margin-top:0.3rem;">ewoutlowie.substack.com</div>
+        </div>
+      </div>
+      <div class="block-text">
+        <div class="section-label">Schrijven</div>
+        <p>Hier een stukje tekst over dat ik dit kan en gedaan heb. Over wat er leuk aan is en waar ik goed in ben. Geweldig allemaal. Dit is een proeftekstje om bij wijze van placeholder.</p>
+        <p>Vier of vijf VICE-artikelen en mijn Substack.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COPYWRITING -->
+  <section id="copywriting">
+    <div class="block reverse img-med" style="height:300px">
+      <div class="block-text">
+        <div class="section-label">Copywriting</div>
+        <p>Ik heb voor verschillende bureaus teksten geschreven, die terechtkwamen in magazines van UWV, de website van ProRail, Samuel Levi, en zelfs in de Jumbo! Ik vroeg Mohamed Ihattaren hoe hij verkleed was met carnaval en aan de president van de Algemene Rekenkamer wat de nadelen zijn van versimpeling van uitkeringsbeleid. Zolang ik mag interviewen voor geld is denk ik mijn lievelingsding ever!!!</p>
+        <ul>
+          <li>UWV</li>
+          <li>ProRail</li>
+          <li>Samuel Levi</li>
+          <li>Jumbo</li>
+        </ul>
+      </div>
+      <div class="magazine-card">
+        <div class="mag-title">SA<br>LA<br>MI</div>
+        <div class="mag-sub">Magazine</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EINDREDACTIE -->
+  <section id="eindredactie">
+    <div class="block" style="height:250px">
+      <div class="img-placeholder eindredactie">
+        <span>[foto]</span>
+      </div>
+      <div class="block-text">
+        <div class="section-label">Eindredactie</div>
+        <p>Je zou een bibliotheek kunnen vullen met het aantal verhalen die ik heb lopen redigeren in mijn werkende leven. Veel voor VICE, tegenwoordig ook voor De Correspondent. Hiernaast zie je hoeveel toewijding ik dat doe: als enige achter m'n laptop als iedereen al lang naar huis is of juist nog niet eens op kantoor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KOMISCHE SNABBELS -->
+  <section id="komisch">
+    <div class="block reverse img-med" style="height:260px">
+      <div class="block-text">
+        <div class="section-label">Komische snabbels</div>
+        <p>Hier een stukje tekst over dat ik dit kan en gedaan heb. Over wat er leuk aan is en waar ik goed in ben. Dit is een proeftekstje om bij wijze van placeholder.</p>
+        <ul>
+          <li>Televisiepubliek</li>
+          <li>Partyreports</li>
+          <li>Geacteerd als Klaas Bruinsma</li>
+        </ul>
+      </div>
+      <div class="img-placeholder komisch">
+        <span>[foto]</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVER MIJ -->
+  <section id="over">
+    <div class="block" style="height:280px">
+      <div class="img-placeholder over">
+        <span>[foto]</span>
+      </div>
+      <div class="block-text">
+        <div class="section-label">Over mij: Ewout Lowie</div>
+        <p>Mijn iets serieuzere leven, na 23 jaar Mariokarten en schoolzwemmen, begon in de jaren 10 van deze eeuw. Ik deed een bachelor Communicatiewetenschappen (meh) en een master Sociologie (sick) en werkte lange tijd op de redactie van VICE, waar ik schreef en redigeerde en de redactie leidde. Sinds 2020 ben ik freelancer en deed ik de dingen die ik op deze website heb geschreven.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Ewout Lowie &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#86e3f1e9f3f2c6e3fee7ebf6eae3a8e5e9eb"><span class="__cf_email__" data-cfemail="5f3a28302a2b1f3a273e322f333a713c3032">[email&#160;protected]</span></a> &nbsp;·&nbsp; <a href="https://ewoutlowie.substack.com" target="_blank">Substack</a></p>
+  </footer>
+
+  <script>
+    // Scroll-triggered fade-in — add animate class first so sections start hidden
+    const sections = document.querySelectorAll('section');
+    sections.forEach(s => s.classList.add('animate'));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.05 });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
