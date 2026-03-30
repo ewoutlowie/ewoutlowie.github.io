@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ewout Lowie — Journalist & Schrijver</title>
+  <title>Ewout Lowie - journalist, redacteur</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,600;1,400;1,700&family=Roboto:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -358,11 +358,18 @@
         grid-template-columns: 1fr;
         height: auto !important;
       }
-      .block .img-placeholder,
-      .block .poster-card,
-      .block .podcast-card,
-      .block .magazine-card { height: 180px; }
-      .block.reverse .block-text { order: -1; }
+
+      /* always put the image/media first, text second */
+      .block > *:first-child       { order: 1; }
+      .block > *:last-child        { order: 2; }
+      .block.reverse > *:first-child { order: 2; }
+      .block.reverse > *:last-child  { order: 1; }
+
+      /* fixed height for all image elements on mobile */
+      .block img,
+      .block > div[style*="position:relative"],
+      .block .img-placeholder { height: 220px; }
+
       .block-text { padding: 1.5rem; border: none !important; }
       nav ul { display: none; }
     }
@@ -423,8 +430,14 @@
       <img src="IMG_9489.jpeg" alt="Het gehoemp van de roerdomp">
       <div class="block-text">
         <div class="section-label">Schrijven</div>
-        <p>Hier een stukje tekst over dat ik dit kan en gedaan heb. Over wat er leuk aan is en waar ik goed in ben. Geweldig allemaal. Dit is een proeftekstje om bij wijze van placeholder.</p>
-        <p>Vier of vijf VICE-artikelen en mijn Substack.</p>
+        <p>Ik hou van schrijven en als de regering eens wat meer zou betalen aan mensen die zorgvuldig hun woorden typen, zou ik het graag vaker doen. Reportages, interviews en essays zijn mijn favoriet.</p>
+        <p>Volg mijn <a href="https://ewoutlowie.substack.com" target="_blank" style="color:#e8e4dc; text-decoration:underline;">Substack-nieuwsbrief</a>, met dagboek-achtige verhalen over mijn hobby 'vogels zoeken' en alle levens-overpeinzingen die daarbij opdoemen.</p>
+        <p>Of lees bijvoorbeeld een stuk dat ik voor VICE schreef:</p>
+        <ul>
+          <li>Reportage: <em>Thuiskomen - Gein</em> (een mijmerende terugblik op mijn hometown)</li>
+          <li>Essay: <em>Mijn vernederende worsteling omtrent het halen van een rijbewijs</em></li>
+          <li>Interview: <em>Ik zat jarenlang bij de Bhagwan en had het voor geen goud willen missen</em></li>
+        </ul>
       </div>
     </div>
   </section>
