@@ -9,7 +9,7 @@
       --ink: #111;
       --paper: #fff;
       --mid: #777;
-      --col: 680px;
+      --col: 850px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,13 +29,23 @@
       align-items: center;
       justify-content: space-between;
     }
-    .site-header .series {
+    .site-header .back-btn {
       font-family: Arial, Helvetica, sans-serif;
       font-weight: bold;
-      font-size: 16px;
-      letter-spacing: .05em;
+      font-size: 14px;
       color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #333;
+      border: 1px solid #555;
+      padding: 7px 16px;
+      border-radius: 4px;
+      letter-spacing: .04em;
+      transition: background .15s;
     }
+    .site-header .back-btn:hover { background: #444; }
     .site-header .byline-small {
       font-size: 12px;
       letter-spacing: .1em;
@@ -123,7 +133,7 @@
 <body>
 
 <header class="site-header">
-  <span class="series">Thuiskomen</span>
+  <a href="/" class="back-btn">← Terug</a>
   <span class="byline-small">Vice.com — 2019</span>
 </header>
 
