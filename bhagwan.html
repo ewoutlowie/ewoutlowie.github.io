@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ik zat jarenlang bij de Bhagwan en had het voor geen goud willen missen – VICE</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Arial', Helvetica, sans-serif;
+    background: #f0f0f0;
+    color: #000;
+  }
+
+  /* ── NAV ── */
+  .nav-top-bar {
+    background: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 20px;
+    font-size: 11px;
+    color: #999;
+    border-bottom: 1px solid #222;
+  }
+
+  nav {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 50px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .vice-logo {
+    font-weight: 900;
+    font-size: 28px;
+    color: #fff;
+    letter-spacing: -1px;
+    text-decoration: none;
+    font-style: italic;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .nav-links a:hover { color: #ccc; }
+
+  .nav-search {
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  /*
+   ── LAYOUT CONCEPT ──
+   - .content-column: centered, ~900px wide — this is the "canvas"
+   - .hero: full width of .content-column (photo nearly full screen width)
+   - .article-block: same width as .content-column, white bg, overlaps hero bottom
+   - .text-inner: narrow column (580px) centered inside .article-block
+  */
+
+  .content-column {
+    max-width: 1155px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ── HERO: full width of content-column ── */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 678px;
+    overflow: hidden;
+    background: #1a1a2e;
+  }
+
+  .hero-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #2c3e50 0%, #3d5a80 40%, #98c1d9 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highway {
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 100%; height: 55%;
+  }
+
+  .highway-road {
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 70%; height: 100%;
+    background: #555;
+    clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+  }
+
+  .placeholder-label {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: rgba(255,255,255,0.2);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .silhouette {
+    width: 110px; height: 190px;
+    background: rgba(0,0,0,0.45);
+    border-radius: 55px 55px 18px 18px;
+    margin: 0 auto 10px;
+  }
+
+  .photo-credit-hero {
+    position: absolute;
+    bottom: 8px; right: 12px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.45);
+    font-style: italic;
+  }
+
+  /* ── ARTICLE BLOCK: same width, white, overlaps bottom of hero ── */
+  .article-block {
+    position: relative;
+    margin-top: -60px;
+    background: #fff;
+    z-index: 10;
+    padding: 0 0 80px;
+  }
+
+  /* ── TITLE AREA: full width of white block ── */
+  .title-area {
+    padding: 32px 40px 20px 22%;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* ── TEXT INNER: wider text column ── */
+  .text-inner {
+    padding: 28px 14% 0 22%;
+  }
+
+  .category-tag {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 2px;
+    margin-bottom: 16px;
+  }
+
+  .article-title {
+    font-size: 33px;
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+  }
+
+  .article-dek {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .byline {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 3px;
+  }
+
+  .byline a {
+    color: #000;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  .pub-date {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 28px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* ── BODY TEXT ── */
+  .article-body p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #1a1a1a;
+    margin-bottom: 22px;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .article-body p:first-child::first-letter {
+    font-size: inherit;
+    font-weight: inherit;
+    float: none;
+    line-height: inherit;
+    margin-right: 0;
+    margin-top: 0;
+    font-family: inherit;
+  }
+
+  /* ── INLINE IMAGE ── */
+  .inline-image { margin: 30px 0; }
+
+  .inline-placeholder {
+    width: 100%; height: 280px;
+    background: linear-gradient(135deg, #b8c6db 0%, #f5f7fa 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .inline-caption {
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+    padding: 6px 0 0 0;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #000;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-size: 32px;
+    font-weight: 900;
+    font-style: italic;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  footer p { font-size: 12px; color: #666; }
+
+  @media (max-width: 768px) {
+    .hero { height: 280px; }
+    .article-block { margin-top: -40px; }
+    .article-title { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+
+
+<!-- CONTENT COLUMN: sets the width for both photo and article block -->
+<div class="content-column">
+
+  <!-- HERO PHOTO -->
+  <div class="hero">
+    <img src="bhagwan1.jpg" alt="Raymond van Mil" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+    <div class="photo-credit-hero">foto Raymond van Mil</div>
+  </div>
+
+  <!-- ARTICLE BLOCK: same width, white, small overlap -->
+  <div class="article-block">
+
+    <!-- TITLE AREA: full width of article block -->
+    <div class="title-area">
+      <div class="category-tag">Interview</div>
+      <h1 class="article-title">Ik zat jarenlang bij de Bhagwan en had het voor geen goud willen missen</h1>
+      <p class="article-dek">We spraken nightlife-fotograaf Raymond van Mil over de Bhagwan, zijn tijd in India en de naam die hij als swami kreeg.</p>
+      <p class="byline">Door <a href="#">Ewout Lowie</a></p>
+
+    </div>
+
+    <!-- NARROW TEXT COLUMN -->
+    <div class="text-inner">
+      <article class="article-body">
+
+        <p>Je kent Raymond van Mil misschien als de man die je altijd hinderlijk hard in je gezicht flitst als je dronken op een feest staat, maar waarschijnlijk niet als swami Antar Sangit. Al 8 jaar lang fotografeert Raymond het nachtleven in met name Amsterdam. Hij is 46, en voordat hij met fotografie begon zag zijn leven er compleet anders uit. Zo sjokte hij niet door clubs om de hotste mensen en glibberigste moshpits vast te leggen, maar droeg hij soms een rood gewaad en sprong hij samen met honderden anderen wild ademend in het rond om in een trance te komen.</p>
+
+        <p>Raymond zat jarenlang bij de Bhagwan, de sekte waar de afgelopen weken veel over gepraat wordt vanwege de alom bejubelde en fantastische documentaireserie Wild Wild Country. (Opgepast, het interview bevat spoilers.)</p>
+
+        <p><strong>VICE: Hey Raymond. Van Bhagwan-swami tot partyfotograaf – waar beginnen we?</strong><br>
+        Raymond van Mil: In Nijmegen. Ik was 20 en blowde al een aantal jaar behoorlijk veel. Tot ik op een dag spacecake had gegeten en in een bad trip van een paar dagen belandde. Ik kreeg angstaanvallen, elke dag wel een paar, en na een paar maanden werd het nog steeds niet beter. Toen ben ik hulp gaan zoeken en kwam ik terecht bij de moeder van een vriend van me – een zweverig type. Ik herinner me niet meer wat ze precies deed, maar het was een soort healingsessie, en toen ik daarna opstond voelde ik me opeens weer oké. Dat was het moment dat ik nieuwsgierig werd.</p>
+
+        <p><strong>En toen?</strong><br>
+        Ik ben yogales gaan volgen van een Nepalees mannetje. Ik vond het fijn, maar ook stijfjes. Ondertussen waren vrienden van me fanatiek bezig met Osho, die kort daarvoor was overleden. [Bhagwan, later Osho geheten, was de goeroe die de Bhagwanbeweging stichtte; hij stierf in 1990].</p>
+
+        <p><strong>Was je snel overtuigd dat dit ook jouw club was?</strong><br>
+        Nou, die vrienden zeiden: "Je moet aan dynamische meditatie doen. Dat is heel heftig ademhalen en wild bewegen, en zo." Ik woonde in een grote garage in Nijmegen en leefde van een uitkering, dus ik had alle tijd om dat te doen. Maandenlang, alleen in mijn garage, met behulp van een cd die ik had gekregen. Het veranderde mijn hele systeem.</p>
+
+        <p><strong>Toen wist je: die Bhagwan, dat is mijn mannetje.</strong><br>
+        Ja. Mijn beste vriend ging naar India, en belde me op een gegeven moment op om te zeggen: "Man, je moet hier echt heen komen." Toen ben ik naar de ashram in Poona gegaan, voor vijf weken.</p>
+
+        <p><strong>Schets even de situatie. Je komt aan in India, pakt de trein naar Poona…</strong><br>
+        Dan pak je een riksha naar de ashram. Daar was een ingang, een soort poort, waar ik me moest inschrijven. Ik moest ook een hiv-test doen. De aidsepidemie was volop gaande en niemand wist precies hoe en wat, dus testten ze voor de zekerheid iedereen. Uiteindelijk kreeg je een toegangspas.</p>
+
+        <div class="inline-image">
+          <img src="bhagwan2.jpg" alt="De toegangspas waarmee Raymond de ashram binnen mocht" style="width:100%;display:block;">
+          <p class="inline-caption">De toegangspas waarmee Raymond de ashram binnen mocht</p>
+        </div>
+
+        <p><strong>Hoe zag het er binnen uit?</strong><br>
+        Als een soort festivalterrein in de tropen. Er waren palmbomen, boekenwinkeltjes, een geweldige keuken, en een enorme meditatieruimte – een soort festivaltent. Slapen en eten deed je in de buurt van waar de ashram stond. De mensen die in dat stadsdeel van Poona woonden verhuurden hun huisjes.</p>
+
+        <p><strong>Was dat hele ashramding geen geldklopperij?</strong><br>
+        Nee hoor, het kostte juist allemaal niks. Entree was geloof ik twee gulden vijftig. Boeken kocht je voor de inkoopsprijs. Het eten was ook goedkoop.</p>
+
+        <p><strong>Wat deed je de hele dag?</strong><br>
+        Ik kocht 's ochtends ontbijt en een mango lassi en dan liep ik naar de ashram. Je kon cursussen doen, maar ik had geen geld, dus ik deed vooral de gratis dingen. Een beetje in de boekwinkel hangen, kletsen met andere mensen, mediteren, en boeken van Osho lezen natuurlijk. En iedere avond was er een grote meditatie die ik altijd meedeed, samen met zo'n duizend anderen. In de hele ashram zaten een stuk of vijftienhonderd mensen, het grootste deel kwam elke avond bijeen om te mediteren.</p>
+
+        <p><strong>Hoe zat het met de seksuele moraal? Werd er in het openbaar geneukt zoals in Wild Wild Country veel wordt beweerd?</strong><br>
+        Dat was wel een beetje over toen ik er zat. Het was wel heel vrij allemaal, maar ik denk dat die openbare seks vooral heel erg jaren zeventig was.</p>
+
+        <p><strong>Klinkt eigenlijk allemaal best saai: vijf weken lang hangen in boekwinkeltjes en mediteren.</strong><br>
+        Tja, sommige mensen kwamen daarheen om vrijheid te zoeken, maar ik was echt heel fanatiek bezig met mediteren. Ik wilde dat helemaal ontdekken.</p>
+
+        <p><strong>Wat hielden die massameditaties in?</strong><br>
+        Osho onderwees in van alles. Soms was het zitten, soms een dynamische meditatie. Ik heb ook weleens lachmeditatie gedaan – dan ging je drie uur lang lachen, en dan een uur mediteren. Of gibberish, dan zit je drie kwartier lang allerlei klanken te maken die in je opkomen.</p>
+
+        <p><strong>Bluehuahueeehuh bliiejoewhuuuaazoejoe…</strong><br>
+        Ja zo. Drie kwartier lang, en daarna ga je stilzitten. Dan is het stil in je hoofd, al die gekte weg. Het werkt als een tierelier.</p>
+
+        <p><strong>Maar hoe werd je nou een swami?</strong><br>
+        Na een paar dagen besloot ik sannyas te doen. Dan word je dus officieel een volger en krijg je een andere naam. Ik moest een formulier invullen en vertellen wat ik deed. Ik was in die tijd veel bezig met muziek maken, dus mijn naam werd swami Antar Sangit. Dat betekent 'innerlijke muziek'.</p>
+
+        <div class="inline-image">
+          <img src="bhagwan3.jpg" alt="Raymond tijdens zijn sannyas" style="width:100%;display:block;">
+          <p class="inline-caption">Raymond tijdens zijn sannyas, waarbij hij veranderde in swami Antar Sangit</p>
+        </div>
+
+        <p><strong>Was er een inwijdingsritueel?</strong><br>
+        Ja, tijdens de grote avondmeditatie. Op het tijdstip waarop Osho vroeger een lezing gaf werd er elke dag een video getoond, met daarna een meditatie. Meestal waren er een stuk of tien mensen die sannyas deden. Ik moest samen met de anderen in het middenpad op een rijtje zitten, en vervolgens kreeg iedereen van een leider een ketting omgehangen. Daarna kreeg ik mijn nieuwe naam in mijn oor gefluisterd.</p>
+
+        <p><strong>"Congratulations, you are now swami Antar Sangit!"?</strong><br>
+        Zoiets ja. Het was heel symbolisch. Je hoefde hem ook niet te gebruiken, maar ik besloot dat wel te doen. Ik heb hem lang gehouden. Er zijn nu nog steeds wel mensen die me als Sangit kennen.</p>
+
+        <p><strong>Hoe ging dat toen je weer thuiskwam? Dan kom je aan in Nederland en dan ben je opeens niet meer Raymond van Mil.</strong><br>
+        Ik zei tegen iedereen: voor mij is meditatie een serieuze zaak en ik heb sannyas genomen, dus zou je me voortaan zo willen noemen? De meeste mensen zijn dat toen gaan doen.</p>
+
+        <p><strong>Het lijkt me toch een beetje een gek gesprek.</strong><br>
+        Een héél gek gesprek! Het is voor mij nu ook gek om erover na te denken. Maar ik vind het ook wel grappig dat ik er toen zo vol voor ging.</p>
+
+        <p><strong>Dus dat was toen je roepnaam. "Sangit wil je ook een bakkie pleur?"</strong><br>
+        "Ey Sangit, telefoon!" Ja, precies zo.</p>
+
+        <p><strong>En hoe waren de reacties? Wat zei je familie?</strong><br>
+        Mijn familie… Hmm… Die hebben dat… Nee. Mijn ouders zijn altijd heel begripvol geweest, maar ze hebben me nooit Sangit genoemd. Dat was een stapje te ver. Dat begreep ik toen ook wel.</p>
+
+        <div class="inline-image">
+          <img src="bhagwan4.jpg" alt="Sangit eet een bordje rijst" style="width:100%;display:block;">
+          <p class="inline-caption">Sangit eet een bordje rijst</p>
+        </div>
+
+        <p><strong>Wat deed je na de ashram?</strong><br>
+        Ik ben in een Bhagwan-woongroep gaan wonen, in een groot huis in Beuningen, vlak bij Nijmegen. Er zaten daar flink wat mensen, ook gezinnetjes. We hadden een groentetuin, een meditatieruimte, we kookten samen biologisch voedsel. Elke week kwamen we bij elkaar in een kring, om te vertellen wat je bezighield en hoe je je voelde.</p>
+
+        <p><strong>Wat deed je verder?</strong><br>
+        Niks. Tekenen, uitgaan, mediteren, muziek maken. Uiteindelijk ben ik er weggegaan omdat ik niet verder kwam. Ik ging Chinese geneeskunde studeren en ben me vol op tai chi gaan storten. Jarenlang. Ik deed ook mee aan wedstrijden.</p>
+
+        <p><strong>Was je goed?</strong><br>
+        Ja, ik was goed. Ik ben een keer tweede geworden op het Europese toernooi pushing hands. Dat is een tak binnen tai chi – een soort sumoworstelen zonder slaan, waarbij je elkaar van een mat moet duwen. Ik heb er tien jaar les in gegeven.</p>
+
+        <p><strong>Hoe ben je uiteindelijk weer Raymond van Mil geworden?</strong><br>
+        Toen ik een jaar of dertig was besefte ik dat Raymond, mijn echte naam, een bepaalde persoonlijke lading had die belangrijker was, en dat het tijd was om een periode af te sluiten. Ik ben me toen gaan verdiepen in de meditatiemethoden van twee leraren uit Koeweit. Uiteindelijk heb ik daarmee mijn eigen methode ontwikkeld.</p>
+
+        <p><strong>Ho. Er is een Raymond van Mil-meditatiemethode?</strong><br>
+        Ja. Intrinsic Movement, heet-ie.</p>
+
+        <div class="inline-image">
+          <img src="bhagwan5.jpg" alt="Sangit doet een yoga-move" style="width:100%;display:block;">
+          <p class="inline-caption">Sangit doet een yoga-move</p>
+        </div>
+
+        <p><strong>Even terug naar Osho. Hoe kijk jij naar wat er in de jaren zeventig in Oregon is gebeurd? Dat was toch jouw club, die de boel zo uit de klauwen heeft laten lopen.</strong><br>
+        Ik heb dat later pas gehoord. Binnen de Bhagwan is dat een soort trauma – het is daar helemaal ontspoord, met de mysterieuze dood van Osho tot gevolg.</p>
+
+        <p><strong>Dus jij ziet dat los van wat de Bhagwanbeweging is?</strong><br>
+        Het is niet ontspoord door de leer van Osho, het is ontspoord doordat een grote groep mensen een compleet nieuw stadje ging bouwen en daar gingen wonen. Dan krijg je opeens een compleet andere machtsstructuur, want dan moeten er mensen de leiding nemen.</p>
+
+        <p><strong>Is de Bhagwan nou een sekte of niet?</strong><br>
+        Voor mij is dat het nooit geweest. Die plek in Oregon wel. Die mensen die daar bakken met geld in hebben gestoken en een stadje hebben gebouwd, dat project zou je een sekte kunnen noemen.</p>
+
+        <div class="inline-image">
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/hBLS_OM6Puk?si=Gc4nA6Rrl4FR3XDg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+          </div>
+        </div>
+
+        <p><strong>Schaam jij je daar eigenlijk voor?</strong><br>
+        Ja, toch wel. Ik moet me in elk geval altijd verdedigen voor wat er daar is gebeurd, als ik mensen vertel over mijn geschiedenis. Aan de andere kant: dat hele project past ook wel weer in de experimentele manier waarop zij met alles omgingen. Ze probeerden alles, ook het bouwen van een nieuwe stad. Nou, dat ging dus mis.</p>
+
+        <p><strong>Als je erop terugkijkt, wat was dan de grote aantrekkingskracht van de Bhagwanbeweging?</strong><br>
+        Dat iedereen extreem oordeelloos was. Heel open. Als je iemand tegenkwam was het meteen een soort familie. Een soort extreem goede festivalsfeer.</p>
+
+        <p><strong>Heeft dat je veranderd?</strong><br>
+        Ja, daar ben ik een totaal ander mens door geworden, in de zin van een soort sociale ontspanning. Het helpt me nu ook heel erg in mijn werk. Je kan me overal neerzetten, en in wat voor subcultuur ik me ook begeef, ik voel me er haast altijd thuis.</p>
+
+        <p><strong>Dus in die zin ben je partyfotogoeroe Antar Sangit.</strong><br>
+        Ik had het voor geen goud willen missen.</p>
+
+      </article>
+    </div><!-- end text-inner -->
+  </div><!-- end article-block -->
+
+</div>
+
+</body>
+</html>

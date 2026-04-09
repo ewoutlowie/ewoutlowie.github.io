@@ -3,96 +3,346 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thuiskomen</title>
-
+<title>In 2018 werd ik eraan herinnerd hoe belangrijk het is om op je bek te gaan – VICE</title>
 <style>
-    body {
-        margin: 0;
-        background: #ffffff;
-        color: #111;
-        font-family: Georgia, "Times New Roman", serif;
-        line-height: 1.75;
-    }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    .container {
-        max-width: 680px;
-        margin: 80px auto;
-        padding: 0 20px;
-    }
+  body {
+    font-family: 'Arial', Helvetica, sans-serif;
+    background: #f0f0f0;
+    color: #000;
+  }
 
-    h1 {
-        font-size: 32px;
-        font-weight: normal;
-        margin-bottom: 40px;
-    }
+  /* ── NAV ── */
+  .nav-top-bar {
+    background: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 20px;
+    font-size: 11px;
+    color: #999;
+    border-bottom: 1px solid #222;
+  }
 
-    p {
-        margin-bottom: 24px;
-        font-size: 18px;
-    }
+  nav {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 50px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
 
-    .spacer {
-        height: 60px;
-    }
+  .vice-logo {
+    font-weight: 900;
+    font-size: 28px;
+    color: #fff;
+    letter-spacing: -1px;
+    text-decoration: none;
+    font-style: italic;
+  }
 
-    .caption {
-        font-size: 14px;
-        color: #666;
-        margin-top: -10px;
-        margin-bottom: 40px;
-    }
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
 
-    @media (max-width: 600px) {
-        .container {
-            margin: 40px auto;
-        }
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+  }
 
-        p {
-            font-size: 17px;
-        }
-    }
+  .nav-links a:hover { color: #ccc; }
+
+  .nav-search {
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  /*
+   ── LAYOUT CONCEPT ──
+   - .content-column: centered, ~900px wide — this is the "canvas"
+   - .hero: full width of .content-column (photo nearly full screen width)
+   - .article-block: same width as .content-column, white bg, overlaps hero bottom
+   - .text-inner: narrow column (580px) centered inside .article-block
+  */
+
+  .content-column {
+    max-width: 1155px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ── HERO: full width of content-column ── */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 678px;
+    overflow: hidden;
+    background: #1a1a2e;
+  }
+
+  .hero-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #2c3e50 0%, #3d5a80 40%, #98c1d9 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highway {
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 100%; height: 55%;
+  }
+
+  .highway-road {
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 70%; height: 100%;
+    background: #555;
+    clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+  }
+
+  .placeholder-label {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: rgba(255,255,255,0.2);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .silhouette {
+    width: 110px; height: 190px;
+    background: rgba(0,0,0,0.45);
+    border-radius: 55px 55px 18px 18px;
+    margin: 0 auto 10px;
+  }
+
+  .photo-credit-hero {
+    position: absolute;
+    bottom: 8px; right: 12px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.45);
+    font-style: italic;
+  }
+
+  /* ── ARTICLE BLOCK: same width, white, overlaps bottom of hero ── */
+  .article-block {
+    position: relative;
+    margin-top: -60px;
+    background: #fff;
+    z-index: 10;
+    padding: 0 0 80px;
+  }
+
+  /* ── TITLE AREA: full width of white block ── */
+  .title-area {
+    padding: 32px 40px 20px 22%;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* ── TEXT INNER: wider text column ── */
+  .text-inner {
+    padding: 28px 14% 0 22%;
+  }
+
+  .category-tag {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 2px;
+    margin-bottom: 16px;
+  }
+
+  .article-title {
+    font-size: 33px;
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+  }
+
+  .article-dek {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .byline {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 3px;
+  }
+
+  .byline a {
+    color: #000;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  .pub-date {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 28px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* ── BODY TEXT ── */
+  .article-body p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #1a1a1a;
+    margin-bottom: 22px;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .article-body p:first-child::first-letter {
+    font-size: inherit;
+    font-weight: inherit;
+    float: none;
+    line-height: inherit;
+    margin-right: 0;
+    margin-top: 0;
+    font-family: inherit;
+  }
+
+  /* ── INLINE IMAGE ── */
+  .inline-image { margin: 30px 0; }
+
+  .inline-placeholder {
+    width: 100%; height: 280px;
+    background: linear-gradient(135deg, #b8c6db 0%, #f5f7fa 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .inline-caption {
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+    padding: 6px 0 0 0;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #000;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-size: 32px;
+    font-weight: 900;
+    font-style: italic;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  footer p { font-size: 12px; color: #666; }
+
+  @media (max-width: 768px) {
+    .hero { height: 280px; }
+    .article-block { margin-top: -40px; }
+    .article-title { font-size: 24px; }
+  }
 </style>
 </head>
-
 <body>
 
-<div class="container">
 
-<h1>Op je bek gaan</h1>
 
-<p>Jaartallen zijn natuurlijk ook maar een construct, maar het eind van het jaar nodigt toch uit tot wat reflectie. Daarom schreven de VICE.com-redacteurs een persoonlijk essay over wat ze het afgelopen jaar over zichzelf hebben geleerd.</p>
+<!-- CONTENT COLUMN: sets the width for both photo and article block -->
+<div class="content-column">
 
-<p>Er was ooit een stagiair op de VICE-redactie aan wie ik had gevraagd of-ie een artikel – tekst en foto’s – wilde uploaden in het CMS, de achterkant van de website waar je nu naar kijkt. Een uurtje later vroeg ik of het was gelukt, en hij antwoordde dat dat zo was, maar toen ik een kijkje nam moest ik in mijn arm knijpen om te geloven wat ik zag. De tekst en de foto’s stonden erin, maar alle foto’s waren 90 graden gedraaid.</p>
+  <!-- HERO PHOTO -->
+  <div class="hero">
+    <img src="rijbewijs1.jpg" alt="foto door David Meulenbeld" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+    <div class="photo-credit-hero">foto door David Meulenbeld</div>
+  </div>
 
-<p>Ik was hier lang van ontdaan. Iedereen maakt fouten, zeker stagiairs, en het was ook geen grote moeite om het zelf even allemaal recht te zetten, maar de oneindigheid aan onbegrip in mijn hersenpan was te overweldigend. Normaal gesproken kun je je, met een beetje inlevingsvermogen, min of meer voorstellen hoe iets fout is gegaan. Iemand die een fout maakt heeft doorgaans een verkeerde logica gehanteerd, iets niet juist beredeneerd, of iets over het hoofd gezien. Maar hier was iets gebeurd in iemands hoofd waar ik op geen enkele manier iets van kon begrijpen, en dat maakte me volkomen radeloos.</p>
+  <!-- ARTICLE BLOCK: same width, white, small overlap -->
+  <div class="article-block">
 
-<p>Precies die radeloosheid zag ik dit jaar meerdere malen in de ogen van mijn rijinstructeur.</p>
+    <!-- TITLE AREA: full width of article block -->
+    <div class="title-area">
+      <div class="category-tag">Eindejaarsessay</div>
+      <h1 class="article-title">In 2018 werd ik eraan herinnerd hoe belangrijk het is om op je bek te gaan</h1>
+      <p class="article-dek">De kleine vierduizend euro die ik aan rijlessen uitgaf leverde me geen rijbewijs op, maar wel een stukje confronterend zelfinzicht.</p>
+      <p class="byline">Door <a href="#">Ewout Lowie</a>; foto's door <a href="#">David Meulenbeld</a></p>
+      <p class="pub-date">31 december 2018, 1:22pm</p>
+    </div>
 
-<p>Ik had besloten om rijles te nemen. Er was niet echt een reden, behalve dat ik besefte dat er nooit écht een reden zou zijn, dat ik een volwassener mens zou moeten zijn, en dat een collega er ook mee begon.</p>
+    <!-- NARROW TEXT COLUMN -->
+    <div class="text-inner">
+      <article class="article-body">
 
-<p>Het werden lessen in vernedering.</p>
+        <p style="font-style:italic;">Jaartallen zijn natuurlijk ook maar een construct, maar het eind van het jaar nodigt toch uit tot wat reflectie. Daarom schreven de VICE.com-redacteurs een persoonlijk essay over wat ze het afgelopen jaar over zichzelf hebben geleerd.</p>
 
-<p>Mocht je ooit verdwaald zijn in het examengebied van Amsterdam – Slotermeer, Geuzenveld en het Westelijk Havengebied – bel me gerust. Als je je afvraagt in welke versnelling je de toerit S105 naar de snelweg richting Haarlem het beste kunt nemen trouwens ook. Ik heb er het asfalt aan flarden gereden. In het begin was het best verfrissend om vanuit niks iets totaal nieuws te leren. Alleen toen ik over de drieduizend euro aan lesgeld heen ging, en het zicht op een rijbewijs nog steeds niet aan de horizon van de A10 gloorde, ging het frisse er wel een beetje vanaf. Het begon allemaal meer naar een vergeten zak sla achterin mijn koelkast te ruiken.</p>
+        <p>Er was ooit een stagiair op de VICE-redactie aan wie ik had gevraagd of-ie een artikel – tekst en foto's – wilde uploaden in het CMS, de achterkant van de website waar je nu naar kijkt. Een uurtje later vroeg ik of het was gelukt, en hij antwoordde dat dat zo was, maar toen ik een kijkje nam moest ik in mijn arm knijpen om te geloven wat ik zag. De tekst en de foto's stonden erin, maar alle foto's waren 90 graden gedraaid.</p>
 
-<div class="spacer"></div>
+        <p>Ik was hier lang van ontdaan. Iedereen maakt fouten, zeker stagiairs, en het was ook geen grote moeite om het zelf even allemaal recht te zetten, maar de oneindigheid aan onbegrip in mijn hersenpan was te overweldigend. Normaal gesproken kun je je, met een beetje inlevingsvermogen, min of meer voorstellen hoe iets fout is gegaan. Iemand die een fout maakt heeft doorgaans een verkeerde logica gehanteerd, iets niet juist beredeneerd, of iets over het hoofd gezien. Maar hier was iets gebeurd in iemands hoofd waar ik op geen enkele manier iets van kon begrijpen, en dat maakte me volkomen radeloos.</p>
 
-<p class="caption">man boven de A10</p>
+        <p>Precies die radeloosheid zag ik dit jaar meerdere malen in de ogen van mijn rijinstructeur.</p>
 
-<p>Op een warme dag fietste ik richting Breukelen, en vlak voor Abcoude moet je dan over een viaduct de A2 oversteken – een vijfbaanssnelweg. Ik bleef halverwege staan en staarde minutenlang naar die tien dikke stromen aan auto’s, honderden per minuut, die onder me door over het asfalt heen raasden. Auto’s met achter het stuur oma’s, halve zolen, mensen zonder middelbareschooldiploma, mensen met een strafblad, mensen met een duivelse muzieksmaak, hooligans, riekende mensen, radio-dj’s, mensen met een onverzorgd gebit, dierenbeulen, gebochelde mensen, mensen die weleens een colbert met daaronder een ludiek T-shirt dragen, mensen die niet weten wat Emile Durkheim voor het Functionalisme heeft betekend. Zoals ik. Maar ook: allemaal mensen die wél hun rijbewijs hadden. De hele wereld heeft immers z’n rijbewijs. Iedereen kan dit. Waarom was dit het moeilijkste wat ik ooit in mijn leven had gedaan?</p>
+        <p>Ik had besloten om rijles te nemen. Er was niet echt een reden, behalve dat ik besefte dat er nooit écht een reden zou zijn, dat ik een volwassener mens zou moeten zijn, en dat een collega er ook mee begon.</p>
 
-<p>Het waren geen gelukkige maanden. Ik moest me het schompes werken om de kantooruren die ik door de rijlessen had gemist in te halen, en aan het eind van elke maand hield ik door die dure lessen geen dubbeltje over. Toen ook de rijlessen zelf voor de kat z’n kut leken omdat ik keer op keer faalde voor m’n examen, leek het alsof alle moeite die ik week in week uit in mijn leven stopte geen reet opleverde.</p>
+        <p>Het werden lessen in vernedering.</p>
 
-<p>Achteraf gezien was dat onzin, want de echte lessen gingen over veel meer dan alleen invoegen, afslaan en de goeie rijstrook kiezen. Ik leerde hoe het is om ergens hondsberoerd in te zijn, om te falen, met alle inzichten die dat opleverde.</p>
+        <p>Mocht je ooit verdwaald zijn in het examengebied van Amsterdam – Slotermeer, Geuzenveld en het Westelijk Havengebied – bel me gerust. Als je je afvraagt in welke versnelling je de toerit S105 naar de snelweg richting Haarlem het beste kunt nemen trouwens ook. Ik heb er het asfalt aan flarden gereden. In het begin was het best verfrissend om vanuit niks iets totaal nieuws te leren. Alleen toen ik over de drieduizend euro aan lesgeld heen ging, en het zicht op een rijbewijs nog steeds niet aan de horizon van de A10 gloorde, ging het frisse er wel een beetje vanaf. Het begon allemaal meer naar een vergeten zak sla achterin mijn koelkast te ruiken.</p>
 
-<p>Zo was de manier waarop mensen troost bieden onbeholpen en hartverwarmend tegelijk. Na de eerste keer zakken was het vinden van troostende woorden het makkelijkst: iets in de trant van ‘ah joh bijna niemand haalt het de eerste keer’. Toen ik voor de tweede keer met de billen bloot moest over m’n falen, kende iedereen wel iemand die er ook drie keer over had gedaan, werd het humeur van de betreffende examinator als doorslaggevende oorzaak aangehaald, en werd het scheepsrecht weer eens afgestoft. Na drie keer zakken begonnen de relativerende zaken op te raken, en moesten mensen zich in nog moeilijkere bochten wringen.</p>
+        <div class="inline-image">
+          <img src="rijbewijs2.jpg" alt="foto door David Meulenbeld" style="width:100%;display:block;">
+          <p class="inline-caption">foto door David Meulenbeld</p>
+        </div>
 
-<p>Het verzachtte de vernederingen amper, maar de moeite die mensen erin stopten waren ontroerend, én nieuw. Voor mij althans. En daar zat de echte les die ik in 2018 leerde. Ik werd met mijn neus op het feit gedrukt dat ik nooit eerder in m’n leven echt heb gefaald.</p>
+        <p>Op een warme dag fietste ik richting Breukelen, en vlak voor Abcoude moet je dan over een viaduct de A2 oversteken – een vijfbaanssnelweg. Ik bleef halverwege staan en staarde minutenlang naar die tien dikke stromen aan auto's, honderden per minuut, die onder me door over het asfalt heen raasden. Auto's met achter het stuur oma's, halve zolen, mensen zonder middelbareschooldiploma, mensen met een strafblad, mensen met een duivelse muzieksmaak, hooligans, riekende mensen, radio-dj's, mensen met een onverzorgd gebit, dierenbeulen, gebochelde mensen, mensen die weleens een colbert met daaronder een ludiek T-shirt dragen, mensen die niet weten wat Emile Durkheim voor het Functionalisme heeft betekend. Zoals ik. Maar ook: allemaal mensen die wél hun rijbewijs hadden. De hele wereld heeft immers z'n rijbewijs. Iedereen kan dit. Waarom was dit het moeilijkste wat ik ooit in mijn leven had gedaan?</p>
 
-<p>Dat stukje zelfinzicht was confronterender dan het onbegrip in de ogen van m’n rijinstructeur, toen ik voor de drieënveertigste keer de verkeerde van de twee rijstroken op het verkeerspleintje koos. Aardig goed zijn in alles wat je doet is misschien helemaal niet hetzelfde als alleen doen waar je aardig goed in bent, besefte ik.</p>
+        <p>Het waren geen gelukkige maanden. Ik moest me het schompes werken om de kantooruren die ik door de rijlessen had gemist in te halen, en aan het eind van elke maand hield ik door die dure lessen geen dubbeltje over. Toen ook de rijlessen zelf voor de kat z'n kut leken omdat ik keer op keer faalde voor m'n examen, leek het alsof alle moeite die ik week in week uit in mijn leven stopte geen reet opleverde.</p>
 
-<p>En hoewel ik geen heerlijkere plek ken dan mijn warme comfortbubbeltje, aangezien ik ‘m nooit echt heb verlaten, kan ik me voorstellen dat een eventueel grootser en meeslepender leven er ergens buiten ligt.</p>
+        <p>Achteraf gezien was dat onzin, want de echte lessen gingen over veel meer dan alleen invoegen, afslaan en de goeie rijstrook kiezen. Ik leerde hoe het is om ergens hondsberoerd in te zijn, om te falen, met alle inzichten die dat opleverde.</p>
 
-<p>In 2019 ga ik eerst maar eens mijn rijbewijs halen, maar ik neem me voor om ook daarna op z’n minst een paar minder veilige keuzes te maken. Ik vermoed dat daar de echte winst te halen valt.</p>
+        <p>Zo was de manier waarop mensen troost bieden onbeholpen en hartverwarmend tegelijk. Na de eerste keer zakken was het vinden van troostende woorden het makkelijkst: iets in de trant van 'ah joh bijna niemand haalt het de eerste keer'. Toen ik voor de tweede keer met de billen bloot moest over m'n falen, kende iedereen wel iemand die er ook drie keer over had gedaan, werd het humeur van de betreffende examinator als doorslaggevende oorzaak aangehaald, en werd het scheepsrecht weer eens afgestoft. Na drie keer zakken begonnen de relativerende zaken op te raken, en moesten mensen zich in nog moeilijkere bochten wringen. Ik werd voorgesteld aan het selecte groepje prutsers die óók vaker dan drie keer examen hadden gedaan. Ik werd op Lowlands gesommeerd om eens te praten met Frank, die staatsexamen moest doen, en werd tijdens een boottochtje door een barmhartige Samaritaan op een bankje naast Fabiënne gezet, die er zelfs vijf keer over had gedaan.</p>
+
+        <p>Het verzachtte de vernederingen amper, maar de moeite die mensen erin stopten waren ontroerend, én nieuw. Voor mij althans. En daar zat de echte les die ik in 2018 leerde. Ik werd met mijn neus op het feit gedrukt dat ik nooit eerder in m'n leven echt heb gefaald. Op school ging het altijd wel prima, daarna ging ik in de stad waar ik al woonde de veiligste studie der studies studeren – communicatiewetenschap – en toen rolde ik via een stage in een baantje waar ik altijd maar ben blijven werken. De combinatie van een klein beetje talent, privileges, maar bovenal een grote liefde voor comfort en daaruit volgend alle veilige keuzes die ik mijn hele leven heb gemaakt, maakten dat nooit in mijn leven plat op m'n bek ben gegaan.</p>
+
+        <p>Dat stukje zelfinzicht was confronterender dan het onbegrip in de ogen van m'n rijinstructeur, toen ik voor de drieënveertigste keer de verkeerde van de twee rijstroken op het verkeerspleintje koos. Aardig goed zijn in alles wat je doet is misschien helemaal niet hetzelfde als alleen doen waar je aardig goed in bent, besefte ik. En hoewel ik geen heerlijkere plek ken dan mijn warme comfortbubbeltje, aangezien ik 'm nooit echt heb verlaten, kan ik me voorstellen dat een eventueel grootser en meeslepender leven er ergens buiten ligt. Een leven waarin ik een jaartje op een boerderij in Nepal woon, een fietsenwinkel in Oeganda begin, drumles neem, mijn prille tekentalent uitbouw, witte pakken ga dragen, een nieuw beroepje uitprobeer, een kameleon in huis neem.</p>
+
+        <p>In 2019 ga ik eerst maar eens mijn rijbewijs halen, maar ik neem me voor om ook daarna op z'n minst een paar minder veilige keuzes te maken. Ik vermoed dat daar de echte winst te halen valt.</p>
+
+      </article>
+    </div><!-- end text-inner -->
+  </div><!-- end article-block -->
 
 </div>
 
